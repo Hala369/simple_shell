@@ -1,6 +1,9 @@
-#include <unistd.h>
-#include <stdlib.h>
-#include <sys/wait.h>
+#include "main.h"
+
+/**
+*  main - exexute child process
+*  Return: void
+*/
 
 int main(void)
 {
@@ -15,6 +18,7 @@ int main(void)
 	else if (child_pid == 0)
 	{
 		char *args[] = {"/bin/ls", "-l", NULL};
+
 		if (execve(args[0], args, NULL) == -1)
 		{
 			perror("execve error");
