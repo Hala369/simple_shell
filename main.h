@@ -45,7 +45,7 @@ typedef struct builtins
 
 char **make_env(char **env);
 void free_env(char **env);
-
+void display_prompt(void);
 ssize_t _puts(char *str);
 char *_strdup(char *strtodup);
 int _strcmpr(char *strcmp1, char *strcmp2);
