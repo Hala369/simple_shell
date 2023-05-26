@@ -6,8 +6,7 @@
 */
 ssize_t _puts(char *str)
 {
-	ssize_t n;
-	ssize_t l;
+	ssize_t n, l;
 
 	n = _strlen(str);
 	l = write(STDOUT_FILENO, str, n);
@@ -27,8 +26,7 @@ char *_strdup(char *strtodup)
 {
 	char *c;
 
-	int l;
-	int b;
+	int l, i;
 
 	if (strtodup == 0)
 		return (NULL);
@@ -37,8 +35,8 @@ char *_strdup(char *strtodup)
 		;
 	c = malloc((l + 1) * sizeof(char));
 
-	for (b = 0; b <= l; b++)
-		c[b] = strtodup[b];
+	for (i = 0; i <= l; i++)
+		c[i] = strtodup[i];
 
 	return (c);
 }
@@ -50,16 +48,16 @@ char *_strdup(char *strtodup)
 */
 int _strcmpr(char *strcmp1, char *strcmp2)
 {
-	int b;
+	int x;
 
-	b = 0;
-	while (strcmp1[b] == strcmp2[b])
+	x = 0;
+	while (strcmp1[x] == strcmp2[x])
 	{
-		if (strcmp1[b] == '\0')
+		if (strcmp1[x] == '\0')
 			return (0);
-		b++;
+		x++;
 	}
-	return (strcmp1[b] - strcmp2[b]);
+	return (strcmp1[x] - strcmp2[x]);
 }
 /**
 * _strcat - concatenates two strings
@@ -70,7 +68,7 @@ int _strcmpr(char *strcmp1, char *strcmp2)
 char *_strcat(char *strc1, char *strc2)
 {
 	char *ns;
-	unsigned int l1, l2, nl, b, c;
+	unsigned int l1, l2, nl, i, j;
 
 	l1 = 0;
 	l2 = 0;
@@ -92,11 +90,11 @@ char *_strcat(char *strc1, char *strc2)
 	ns = malloc(nl * sizeof(char));
 	if (ns == NULL)
 		return (NULL);
-	for (b = 0; b < l1; b++)
-		ns[b] = strc1[b];
-	ns[b] = '/';
-	for (c = 0; c < l2; c++)
-		ns[b + 1 + c] = strc2[c];
+	for (i = 0; i < l1; i++)
+		ns[i] = strc1[i];
+	ns[i] = '/';
+	for (j = 0; j < l2; j++)
+		ns[i + 1 + j] = strc2[j];
 	ns[l1 + l2 + 1] = '\0';
 	return (ns);
 }
@@ -112,5 +110,6 @@ unsigned int _strlen(char *str)
 	l = 0;
 
 	for (l = 0; str[l]; l++)
-		return (l);
+		;
+	return (l);
 }
